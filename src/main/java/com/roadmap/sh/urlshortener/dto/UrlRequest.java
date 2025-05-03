@@ -12,5 +12,5 @@ import org.hibernate.validator.constraints.URL;
 @Builder
 public class UrlRequest {
     @URL(message = "Invalid URL")
-    private String og_url;
+    private String url;
 }
