@@ -1,9 +1,7 @@
 package com.roadmap.sh.urlshortener.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -18,8 +16,11 @@ public class Url {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String og_url;
-    private String short_code;
+    @Size(max = 2048)
+    private String originalUrl;
+    private String shortCode;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
+    @Column(nullable = false)
+    private int clickCount = 0;
 }
